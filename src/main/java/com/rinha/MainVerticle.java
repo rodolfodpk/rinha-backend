@@ -214,7 +214,7 @@ public class MainVerticle extends AbstractVerticle {
   PgConnectOptions pgConnectOptions() {
     return new PgConnectOptions()
       .setPort(5432)
-      .setHost("localhost")
+      .setHost("localhost") // TODO usar https://vertx.io/docs/vertx-pg-client/java/#_unix_domain_sockets
       .setDatabase("rinhadb")
       .setUser("rinha")
       .setPassword("rinha123");
