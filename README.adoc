@@ -8,6 +8,8 @@ This application was generated using http://start.vertx.io
 
 This is inspired on the previous work or many people. I started this pet project after seeing this repository: https://github.com/zsantana/rinha-backend-by-bruno-borges/tree/main
 
+== Status
 
+This is a WIP. I will eventually add more code and documentation.
 
 
