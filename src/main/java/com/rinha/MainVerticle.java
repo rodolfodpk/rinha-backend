@@ -16,6 +16,7 @@ import io.vertx.sqlclient.SqlClient;
 import io.vertx.sqlclient.Tuple;
 
 import java.util.Arrays;
+import java.util.Random;
 import java.util.UUID;
 
 import static com.rinha.MainVerticle.RequestValidationRules.*;
@@ -25,6 +26,7 @@ public class MainVerticle extends AbstractVerticle {
   private final Logger logger = LoggerFactory.getLogger(MainVerticle.class);
   private HttpServer server;
   private SqlClient sqlClient;
+  private Random random = new Random();
 
   @Override
   public void start(Promise<Void> startPromise) throws Exception {
@@ -172,7 +174,7 @@ public class MainVerticle extends AbstractVerticle {
               return;
             }
             // now let's insert
-            UUID id = UUID.randomUUID();
+            UUID id = new UUID(random.nextLong(), random.nextLong());
             Tuple tuple = Tuple.of(id, nascimento, apelido, nome, "ARRAY " + Arrays.toString(stack.stream().toArray()));
             logger.info(tuple);
             sqlClient.preparedQuery("insert into pessoas (id, nascimento, apelido, nome, stack)" +
@@ -202,7 +204,7 @@ public class MainVerticle extends AbstractVerticle {
    *
    * @return HttpServerOptions
    */
-  HttpServerOptions httpServerOptions() {
+  private HttpServerOptions httpServerOptions() {
     // Configure HTTP server options for h2c
     return new HttpServerOptions()
       .setPort(8080) // Set the desired port
@@ -211,7 +213,7 @@ public class MainVerticle extends AbstractVerticle {
       .setSsl(false); // Disable SSL/TLS
   }
 
-  PgConnectOptions pgConnectOptions() {
+  private PgConnectOptions pgConnectOptions() {
     return new PgConnectOptions()
       .setPort(5432)
       .setHost("localhost") // TODO usar https://vertx.io/docs/vertx-pg-client/java/#_unix_domain_sockets
@@ -220,12 +222,12 @@ public class MainVerticle extends AbstractVerticle {
       .setPassword("rinha123");
   }
 
-  SqlClient sqlClient() {
+  private SqlClient sqlClient() {
     PoolOptions poolOptions = new PoolOptions().setMaxSize(5);
     return PgPool.client(vertx, pgConnectOptions(), poolOptions);
   }
 
-  static class RequestValidationRules {
+  protected static class RequestValidationRules {
     public static final int MAX_APELIDO = 32;
     public static final int MAX_NAME = 100;
     public static final int MAX_STACK = 32;
