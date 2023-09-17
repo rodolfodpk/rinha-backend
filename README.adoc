@@ -6,7 +6,7 @@ This application was generated using http://start.vertx.io
 
 == Info
 
-This is inspired on the previous work or many people. I started this pet project after seeing this repository: https://github.com/zsantana/rinha-backend-by-bruno-borges/tree/main
+This is inspired on the previous work of many people. I started this pet project after seeing this repository: https://github.com/zsantana/rinha-backend-by-bruno-borges/tree/main
 
 == Status
 
