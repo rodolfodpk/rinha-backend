@@ -3,7 +3,7 @@
 POST http://localhost:8080/pessoas HTTP/1.1
 Content-Type: application/json
 
-{"apelido": "ss", "nome": " ss qphvZskUGNRSMUz DYRUOkONAXttmNjnGltpE ", "nascimento": "1945-11-20", "stack": ["Postgres", "Swift", "Kotlin", "R", "C#", "Go", "Perl", "MySQL", "Clojure", "CSS", "Scala", "C", "HTML", "R", "Swift", "CSS", "Java", "Javascript", "SQL", "MySQL", "Java"]}
+{"apelido": "8888", "nome": " ss qphvZskUGNRSMUz 88DYRUOkONAXttmNjnGltpE ", "nascimento": "1945-11-20", "stack": ["Postgres", "Swift", "Kotlin", "R", "C#", "Go", "Perl", "MySQL", "Clojure", "CSS", "Scala", "C", "HTML", "R", "Swift", "CSS", "Java", "Javascript", "SQL", "MySQL", "Java"]}
 
 
 ### Apelido too long (>32)
